@@ -7,7 +7,7 @@ import Alert from './Components/Alert';
 import About from './Components/About';
 import {
   BrowserRouter,
-  link,
+  // link,
   Route,
   Routes,
 } from "react-router-dom";
@@ -48,16 +48,16 @@ function App() {
   
   return (
   <> 
-        {/* <BrowserRouter> */}
+        <BrowserRouter>
           <Navbar title="Hakimi Dry Fruits" mode={mode} toggleMode={toggle}   />
           <Alert  alert={alert}/>
           <div className="container my-3" >
-              {/* <Routes> */}
-                  {/* <Route exact path="/" element={*/}<Form heading="Enter Text Here"  mode={mode} showAlert={showAlert}/>  
-                  {/* <Route exact path="/about" element={<About/>} /> */}
-              {/* </Routes> */}
+              <Routes>
+                  <Route exact path="/" element={<Form heading="Textutils-Word Counter|Character Counter "  mode={mode} showAlert={showAlert}/>}/>  
+                  <Route exact path="/about" element={<About mode={mode}/>} />
+              </Routes>
           </div>
-        {/* </BrowserRouter>  */}
+        </BrowserRouter> 
   </>
    
   );

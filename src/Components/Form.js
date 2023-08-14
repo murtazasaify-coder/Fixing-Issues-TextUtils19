@@ -20,7 +20,17 @@ export default function Form(props) {
         props.showAlert('Cleared Everything','success');
    
     }
-       
+    const handleonclickCopy=()=>{
+       let text=document.getElementById("mybox");
+       text.select();
+       document.getSelection().removeAllRanges();
+       navigator.clipboard.writeText(text.value);
+    }
+     
+   const handleonclickRemove=()=>{
+      let newtext=text.split(/[ ]+/);
+      settext(newtext.join(" "));
+    }
     const  handlechange=(event)=>{
         settext(event.target.value);
         
@@ -31,19 +41,21 @@ export default function Form(props) {
     <div>
        <div className="container">
          <div >
-           <h1>{props.heading}</h1>
+           <h1 className="mb-2">{props.heading}</h1>
          </div>
          <div className="mb-3">
            <textarea className="form-control" id="mybox" style={{backgroundColor:props.mode==='light'?'white':'#067a97', color:props.mode==='light'?'black':'white'}} onChange={handlechange} value={text} rows="6"></textarea>
          </div>
-            <button className="btn btn-primary"  onClick={handleonclick}>Convert to Upper Case</button>
-            <button className="btn btn-primary mx-4"  onClick={handleonclickLower}>Convert to Lower Case</button>
-            <button className="btn btn-primary mx-4"  onClick={handleonclickclear}>Clear Text</button>
+            <button disabled={text.length===0}className="btn btn-primary mx-2 my-1"  onClick={handleonclick}>Convert to Upper Case</button>
+            <button disabled={text.length===0}className="btn btn-primary mx-2 my-1"  onClick={handleonclickLower}>Convert to Lower Case</button>
+            <button disabled={text.length===0}className="btn btn-primary mx-2 my-1"  onClick={handleonclickclear}>Clear Text</button>
+            <button disabled={text.length===0}className="btn btn-primary mx-2 my-1"  onClick={handleonclickCopy}>Copy Text</button>
+            <button disabled={text.length===0}className="btn btn-primary mx-2 my-1"  onClick={handleonclickRemove}>Remove Extra Space </button>
         </div> 
         <div className="container my-3">
-            <h2>Your Text Summary</h2>
-            <p>{text.split(" ").length} words and {text.length} characters </p>
-            <p>{0.008*text.split(" ").length} time to read </p>
+            <h2 >Your Text Summary</h2>
+            <p>{text.split(" ").filter((element)=>{ return element.length!==0}).length} words and {text.length} characters </p>
+            <p>{0.008*text.split(" ").filter((element)=>{ return element.length!==0}).length} time to read </p>
         </div>
         <div className="container my-3">
             <h2>Preview</h2>
