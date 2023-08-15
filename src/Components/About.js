@@ -37,7 +37,7 @@ export default function About(props) {
      
   return (
 <div>
-    <div className="container my-4" style={mystyle}>
+    {/* <div className="container my-4" style={mystyle}> */}
         <h2>About Us</h2>
         <div className="accordion my-4" id="accordionExample" style={mystyle} >
             <div className="accordion-item" style={mystyle} >
@@ -81,7 +81,7 @@ export default function About(props) {
             <button type="button" onClick={DarkMode} className="btn btn-primary">{theme}</button>
         </div> */}
         
-    </div>  
+    {/* </div>   */}
 </div>
   )
 }

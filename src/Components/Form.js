@@ -21,15 +21,15 @@ export default function Form(props) {
    
     }
     const handleonclickCopy=()=>{
-       let text=document.getElementById("mybox");
-       text.select();
-       document.getSelection().removeAllRanges();
-       navigator.clipboard.writeText(text.value);
+     // let text=document.getElementById("mybox");
+       navigator.clipboard.writeText(text);
+       props.showAlert('Copied','success');
     }
      
    const handleonclickRemove=()=>{
       let newtext=text.split(/[ ]+/);
       settext(newtext.join(" "));
+      props.showAlert('Extra Space Removed','success');
     }
     const  handlechange=(event)=>{
         settext(event.target.value);
@@ -54,7 +54,7 @@ export default function Form(props) {
         </div> 
         <div className="container my-3">
             <h2 >Your Text Summary</h2>
-            <p>{text.split(" ").filter((element)=>{ return element.length!==0}).length} words and {text.length} characters </p>
+            <p>{text.split(/\s+/).filter((element)=>{ return element.length!==0}).length} words and {text.length} characters </p>
             <p>{0.008*text.split(" ").filter((element)=>{ return element.length!==0}).length} time to read </p>
         </div>
         <div className="container my-3">

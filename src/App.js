@@ -45,11 +45,12 @@ function App() {
      }
      
   }  
+
   
   return (
   <> 
         <BrowserRouter>
-          <Navbar title="Hakimi Dry Fruits" mode={mode} toggleMode={toggle}   />
+          <Navbar title="Hakimi Dry Fruits" mode={mode} toggleMode={toggle}    />
           <Alert  alert={alert}/>
           <div className="container my-3" >
               <Routes>
